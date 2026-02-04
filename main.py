@@ -20,6 +20,35 @@ def main():
     results = scanner.scan(ip_range, port_range)
 
     # Show results
-    print(results)
+    print_scan_results(results)
+
+def print_scan_results(results):
+    # Make sure that the output is converted from raw data to something more human readable
+    print("\n" + "+"*21)
+    print("| PORT SCAN RESULTS |")
+    print("+"*21)
+    
+    # Error handling
+    if not results['scan']:
+        print("No hosts found or scan failed.")
+        return
+    
+    # Result structuring
+    for host in results['scan']:
+
+        print("\n\n--------------------NEW HOST--------------------")
+        print(f"\nHost: {host}")
+        host_data = results['scan'][host]
+        print(f"Status: {host_data['status']['state']}")
+        
+        if 'tcp' in host_data:
+            print("\nOpen Ports:")
+            for port in sorted(host_data['tcp'].keys()):
+                port_info = host_data['tcp'][port]
+                state = port_info['state']
+                service = port_info.get('name', 'Unknown')
+                print(f"  Port {port:5d} - {state:10s} ({service})")
+    
+    print("\n" + "="*30 + "\n")
 
 main()
