@@ -9,3 +9,10 @@ Set up the NMAP scanner to accept input for list of IP and Port ranges
 
 # Update 2
 Structured the raw output from NMAP into something more human-readable.
+
+# Update 3
+Put in an IF to skip over closed ports.
+    I explored using nmap3 for a while but could not figure out how to change my 
+    code to make this adjustment. I ended up finding out that nmap3 does not support
+    the kind of scan that I want. My options were top port scan or list scan, neither
+    were what I am looking for.
