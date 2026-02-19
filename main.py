@@ -47,7 +47,12 @@ def print_scan_results(results):
                 port_info = host_data['tcp'][port]
                 state = port_info['state']
                 service = port_info.get('name', 'Unknown')
-                print(f"  Port {port:5d} - {state:10s} ({service})")
+
+                # Skip closed ports
+                if state == 'closed':
+                    continue
+                else:
+                    print(f"  Port {port} - {state} ({service})")
     
     print("\n" + "="*30 + "\n")
 
