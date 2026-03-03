@@ -1,0 +1,2 @@
+host,host_status,port,port_state,service
+192.168.1.166,up,445,open,microsoft-ds

@@ -2,6 +2,7 @@
 #Goal is to create a port scanner that can scan a range of IP addresses and ports, then identify the statuses of each port (open, closed, filtered), then export the results to a CSV file.
 
 import nmap
+import csv
 
 # Specify the path to the Nmap executable
 nmap_path = r'C:\Program Files (x86)\Nmap\nmap.exe'
@@ -21,6 +22,9 @@ def main():
 
     # Show results
     print_scan_results(results)
+
+    # Optional CSV export
+    export_results_to_csv(results)
 
 def print_scan_results(results):
     # Make sure that the output is converted from raw data to something more human readable
@@ -55,5 +59,42 @@ def print_scan_results(results):
                     print(f"  Port {port} - {state} ({service})")
     
     print("\n" + "="*30 + "\n")
+
+# Create a function that exports the results to a CSV file
+def export_results_to_csv(results):
+    export_choice = input("Do you want to export results to a CSV file? (y/n): ").strip().lower()
+
+    if export_choice != 'y':
+        print("CSV export skipped.")
+        return
+
+    file_name = "scan_results.csv"
+
+    with open(file_name, mode='w', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["host", "host_status", "port", "port_state", "service"])
+
+        if not results.get('scan'):
+            print(f"CSV file created: {file_name} (no scan rows to write)")
+            return
+
+        for host in results['scan']:
+            host_data = results['scan'][host]
+            host_status = host_data.get('status', {}).get('state', 'unknown')
+
+            if 'tcp' in host_data:
+                for port in sorted(host_data['tcp'].keys()):
+                    port_info = host_data['tcp'][port]
+                    state = port_info.get('state', 'unknown')
+                    service = port_info.get('name', 'Unknown')
+
+                    if state == 'closed':
+                        continue
+
+                    writer.writerow([host, host_status, port, state, service])
+            else:
+                writer.writerow([host, host_status, "", "", ""])
+
+    print(f"Results exported to {file_name}")
 
 main()
