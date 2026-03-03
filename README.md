@@ -16,3 +16,7 @@ Put in an IF to skip over closed ports.
     code to make this adjustment. I ended up finding out that nmap3 does not support
     the kind of scan that I want. My options were top port scan or list scan, neither
     were what I am looking for.
+    
+# Update 4
+Added a function that asks the user if they want to export the results to a new csv file. 
+    The output to the csv file needs better formatting, but this works for now.
