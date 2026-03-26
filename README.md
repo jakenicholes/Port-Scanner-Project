@@ -20,3 +20,6 @@ Put in an IF to skip over closed ports.
 # Update 4
 Added a function that asks the user if they want to export the results to a new csv file. 
     The output to the csv file needs better formatting, but this works for now.
+
+# Update 5
+Cleaned the .csv output to look more like the results output. Looks drastically better now.

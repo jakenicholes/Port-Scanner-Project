@@ -1,2 +1,40 @@
-host,host_status,port,port_state,service
-192.168.1.166,up,445,open,microsoft-ds
+-----Port Scan Results-----
+
+--------------------NEW HOST--------------------
+Host: 192.168.2.26
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - open (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.2.27
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - filtered (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.2.30
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - open (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.2.28
+Status: up
+Open Ports:
+  Port 445 - open (microsoft-ds)
