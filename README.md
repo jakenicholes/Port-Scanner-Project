@@ -23,3 +23,9 @@ Added a function that asks the user if they want to export the results to a new 
 
 # Update 5
 Cleaned the .csv output to look more like the results output. Looks drastically better now.
+
+# Update 6
+Gave users the option to rename the exported file name.
+
+    Planned next update for giving user the option to filer results to only include 
+    hosts with an open port.

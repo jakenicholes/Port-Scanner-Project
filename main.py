@@ -68,7 +68,9 @@ def export_results_to_csv(results):
         print("CSV export skipped.")
         return
 
-    file_name = "scan_results.csv"
+    file_name = input("Enter the CSV file name (default: scan_results.csv): ").strip()
+    if not file_name:
+        file_name = "scan_results.csv"
 
     with open(file_name, mode='w', newline='', encoding='utf-8') as csv_file:
         writer = csv.writer(csv_file)
