@@ -1,0 +1,69 @@
+-----Port Scan Results-----
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.1
+Status: up
+Open Ports:
+  Port 443 - open (https)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.172
+Status: up
+Open Ports:
+  Port 443 - open (tcpwrapped)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.177
+Status: up
+Open Ports:
+  Port 443 - open (https)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.179
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - filtered (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.193
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - filtered (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.196
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - filtered (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.215
+Status: up
+Open Ports:
+  Port 440 - filtered (sgcp)
+  Port 441 - filtered (decvms-sysmgt)
+  Port 442 - filtered (cvc_hostd)
+  Port 443 - filtered (https)
+  Port 444 - filtered (snpp)
+  Port 445 - filtered (microsoft-ds)
+
+--------------------NEW HOST--------------------
+Host: 192.168.1.166
+Status: up
+Open Ports:
+  Port 445 - open (microsoft-ds)

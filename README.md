@@ -29,3 +29,6 @@ Gave users the option to rename the exported file name.
 
     Planned next update for giving user the option to filer results to only include 
     hosts with an open port.
+
+# Update 7
+Gave users the option to only display hosts with an open port.

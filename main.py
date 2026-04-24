@@ -7,6 +7,16 @@ import csv
 # Specify the path to the Nmap executable
 nmap_path = r'C:\Program Files (x86)\Nmap\nmap.exe'
 
+
+def host_has_open_ports(host_data):
+    if 'tcp' not in host_data:
+        return False
+
+    return any(
+        port_info['state'] != 'closed'
+        for port_info in host_data['tcp'].values()
+    )
+
 #Define main function
 def main():
 
@@ -20,13 +30,17 @@ def main():
     scanner = nmap.PortScanner(nmap_search_path=(nmap_path,))
     results = scanner.scan(ip_range, port_range)
 
+    open_ports_only = input(
+        "Only show hosts that have at least one open port? (y/n): "
+    ).strip().lower() == 'y'
+
     # Show results
-    print_scan_results(results)
+    print_scan_results(results, open_ports_only)
 
     # Optional CSV export
-    export_results_to_csv(results)
+    export_results_to_csv(results, open_ports_only)
 
-def print_scan_results(results):
+def print_scan_results(results, open_ports_only=False):
     # Make sure that the output is converted from raw data to something more human readable
     print("\n" + "+"*21)
     print("| PORT SCAN RESULTS |")
@@ -40,9 +54,13 @@ def print_scan_results(results):
     # Result structuring
     for host in results['scan']:
 
+        host_data = results['scan'][host]
+
+        if open_ports_only and not host_has_open_ports(host_data):
+            continue
+
         print("\n\n--------------------NEW HOST--------------------")
         print(f"\nHost: {host}")
-        host_data = results['scan'][host]
         print(f"Status: {host_data['status']['state']}")
         
         if 'tcp' in host_data:
@@ -61,7 +79,7 @@ def print_scan_results(results):
     print("\n" + "="*30 + "\n")
 
 # Create a function that exports the results to a CSV file
-def export_results_to_csv(results):
+def export_results_to_csv(results, open_ports_only=False):
     export_choice = input("Do you want to export results to a CSV file? (y/n): ").strip().lower()
 
     if export_choice != 'y':
@@ -82,6 +100,10 @@ def export_results_to_csv(results):
 
         for host in results['scan']:
             host_data = results['scan'][host]
+
+            if open_ports_only and not host_has_open_ports(host_data):
+                continue
+
             writer.writerow("")
             writer.writerow(["--------------------NEW HOST--------------------"])
             writer.writerow([f"Host: {host}"])
